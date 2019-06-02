@@ -42,10 +42,10 @@ static const int SDL_WAKEUPEVENT = SDL_USEREVENT+1;
 #define PEPIN			((0x10010400 - GPIO_BASE) >> 2)
 #define PFPIN			((0x10010500 - GPIO_BASE) >> 2)
 
-#define BTN_X			SDLK_SPACE
+#define BTN_B			SDLK_SPACE
 #define BTN_A			SDLK_LCTRL
-#define BTN_B			SDLK_LALT
-#define BTN_Y			SDLK_LSHIFT
+#define BTN_TA			SDLK_LALT
+#define BTN_TB			SDLK_LSHIFT
 #define BTN_L1			SDLK_TAB
 #define BTN_R1			SDLK_BACKSPACE
 #define BTN_START		SDLK_RETURN
@@ -306,15 +306,15 @@ int main(int argc, char* argv[]) {
 
 		if (event.key.keysym.sym) {
 			sprintf(buf, "Last key: %s", SDL_GetKeyName(event.key.keysym.sym));
-			draw_text(bgrect.x + 20, bgrect.y + nextline, buf, subTitleColor, VAlignBottom);
+			draw_text(bgrect.x + 30, bgrect.y + nextline, buf, subTitleColor, VAlignBottom);
 			nextline += 16;
 
 			sprintf(buf, "Keysym.sym: %d", event.key.keysym.sym);
-			draw_text(bgrect.x + 20, bgrect.y + nextline, buf, subTitleColor, VAlignBottom);
+			draw_text(bgrect.x + 30, bgrect.y + nextline, buf, subTitleColor, VAlignBottom);
 			nextline += 16;
 
 			sprintf(buf, "Keysym.scancode: %d", event.key.keysym.scancode);
-			draw_text(bgrect.x + 20, bgrect.y + nextline, buf, subTitleColor, VAlignBottom);
+			draw_text(bgrect.x + 30, bgrect.y + nextline, buf, subTitleColor, VAlignBottom);
 			nextline += 16;
 		}
 
@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
 		
 			SDL_Rect rect;
 			rect.w = 10;
-			rect.h = 10;
+			rect.h = 15;
 			rect.x = 310 + bgrect.x;
 			rect.y = 40 + bgrect.y;
 			SDL_FillRect(screen, &rect, SDL_MapRGB(screen->format, 150, 0, 0));
@@ -349,19 +349,19 @@ int main(int argc, char* argv[]) {
 		}
 
 		// if (keys[BTN_SELECT] && keys[BTN_START]) loop = 0;
-		if (keys[BTN_START]) draw_point(70, 200, 16, 8);
-		if (keys[BTN_SELECT]) draw_point(44, 205, 16, 8);
-		if (keys[BTN_POWER]) draw_point(0, 85, 10, 20);
-		if (keys[BTN_BACKLIGHT]) draw_point(150, 0, 20, 10);
-		if (keys[BTN_LEFT]) draw_point(5, 146, 19, 20);
-		if (keys[BTN_RIGHT]) draw_point(44, 146, 19, 20);
-		if (keys[BTN_UP]) draw_point(24, 127, 20, 19);
-		if (keys[BTN_DOWN]) draw_point(24, 166, 20, 19);
-		if (keys[BTN_B]) draw_point(133, 146, 22, 22);
-		if (keys[BTN_A]) draw_point(111, 168, 22, 22);
-		if (keys[BTN_Y]) draw_point(111, 124, 22, 22);
-		if (keys[BTN_X]) draw_point(89, 146, 22, 22);
-		if (keys[BTN_R]) draw_point(72, 124, 13, 13);
+		if (keys[BTN_START]) draw_point(79, 205, 16, 8);
+		if (keys[BTN_SELECT]) draw_point(53, 210, 16, 8);
+		if (keys[BTN_LEFT]) draw_point(14, 151, 19, 20);
+		if (keys[BTN_RIGHT]) draw_point(53, 151, 19, 20);
+		if (keys[BTN_UP]) draw_point(33, 132, 20, 19);
+		if (keys[BTN_DOWN]) draw_point(33, 171, 20, 19);
+		if (keys[BTN_B]) draw_point(98, 151, 22, 22);
+		if (keys[BTN_A]) draw_point(120, 173, 22, 22);
+		if (keys[BTN_TB]) draw_point(120, 129, 22, 22);
+		if (keys[BTN_TA]) draw_point(142, 151, 22, 22);
+		if (keys[BTN_R]) draw_point(81, 129, 13, 13);
+		if (keys[BTN_L1]) draw_point(8, 3, 32, 8);
+		if (keys[BTN_R1]) draw_point(135, 3, 32, 8);
 
 		SDL_Flip(screen);
 
